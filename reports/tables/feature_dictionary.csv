@@ -1,0 +1,16 @@
+column,role,description
+air_temperature_k,feature,Original air temperature in kelvin.
+process_temperature_k,feature,Original process temperature in kelvin.
+rotational_speed_rpm,feature,Original rotational speed in revolutions per minute.
+torque_nm,feature,Original torque in newton-meters.
+tool_wear_min,feature,Original tool wear duration in minutes.
+temperature_difference_k,feature,Process temperature minus air temperature.
+temperature_ratio,feature,Process temperature divided by air temperature.
+mechanical_power_kw,feature,Mechanical power estimate from torque and rotational speed.
+torque_per_krpm,feature,Torque normalized by rotational speed in thousands of rpm.
+tool_wear_x_torque,feature,Interaction between accumulated tool wear and torque.
+tool_wear_x_power,feature,Interaction between accumulated tool wear and mechanical power.
+product_quality_L,feature,One-hot indicator for low-quality products.
+product_quality_M,feature,One-hot indicator for medium-quality products.
+product_quality_H,feature,One-hot indicator for high-quality products.
+machine_failure,target,"Binary target: 1 if a machine failure occurred, otherwise 0."

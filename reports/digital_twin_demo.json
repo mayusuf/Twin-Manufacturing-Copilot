@@ -1,0 +1,49 @@
+{
+  "model": "random_forest",
+  "risk_score_definition": "100 * failure_model_score; uncalibrated model score.",
+  "health_indicator_definition": "100 - risk_score; a heuristic inverse-risk indicator.",
+  "simulation_interpretation": "Changed-input model comparison, not a physical or causal forecast.",
+  "simulation": {
+    "baseline": {
+      "state": {
+        "product_quality": "M",
+        "air_temperature_k": 298.1,
+        "process_temperature_k": 308.6,
+        "rotational_speed_rpm": 1551.0,
+        "torque_nm": 42.8,
+        "tool_wear_min": 0.0
+      },
+      "prediction": {
+        "machine_failure": 0,
+        "prediction_label": "No failure",
+        "failure_model_score": 0.0,
+        "risk_score": 0.0,
+        "health_indicator": 100.0,
+        "threshold": 0.5
+      },
+      "timestamp_utc": "2026-10-10T01:40:04.100197+00:00"
+    },
+    "scenario": {
+      "state": {
+        "product_quality": "M",
+        "air_temperature_k": 298.1,
+        "process_temperature_k": 308.6,
+        "rotational_speed_rpm": 1200.0,
+        "torque_nm": 60.0,
+        "tool_wear_min": 220.0
+      },
+      "prediction": {
+        "machine_failure": 0,
+        "prediction_label": "No failure",
+        "failure_model_score": 0.47,
+        "risk_score": 47.0,
+        "health_indicator": 53.0,
+        "threshold": 0.5
+      },
+      "timestamp_utc": "2026-10-10T01:40:04.116541+00:00"
+    },
+    "risk_score_change": 47.0,
+    "health_indicator_change": -47.0
+  },
+  "original_state_preserved": true
+}

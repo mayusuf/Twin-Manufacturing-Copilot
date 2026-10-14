@@ -1,0 +1,12 @@
+pandas
+matplotlib
+seaborn
+scikit-learn
+joblib
+xgboost
+streamlit
+langgraph>=1.0,<2
+langchain-core>=1.0,<2
+langchain-openai>=1.0,<2
+openai>=2.0,<4
+pydantic>=2.0,<3

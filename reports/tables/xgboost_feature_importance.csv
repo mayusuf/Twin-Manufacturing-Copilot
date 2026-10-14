@@ -1,0 +1,15 @@
+feature,importance
+torque_per_krpm,0.19697438
+torque_nm,0.13409527
+rotational_speed_rpm,0.11837435
+tool_wear_min,0.115206495
+mechanical_power_kw,0.10824073
+temperature_difference_k,0.06556005
+tool_wear_x_torque,0.060424905
+temperature_ratio,0.057987873
+tool_wear_x_power,0.05778328
+air_temperature_k,0.024803346
+process_temperature_k,0.019549621
+product_quality_M,0.019087685
+product_quality_L,0.011283492
+product_quality_H,0.010628518
