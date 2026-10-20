@@ -107,7 +107,6 @@ def render_prediction(snapshot):
     health.metric("Health indicator", f"{prediction.health_indicator:.2f} / 100")
     st.progress(prediction.failure_model_score)
     st.caption(f"Classification threshold: {prediction.threshold * 100:.0f} / 100")
-    st.caption(SCORE_NOTE)
     with st.expander("Evaluated machine state"):
         st.table(pd.DataFrame({
             "Input": [INPUT_LABELS[key] for key in DEFAULT_INPUTS],
@@ -186,7 +185,6 @@ def render_simulation():
             table[label] = [str(getattr(comparison.baseline.state, key)), str(getattr(comparison.scenario.state, key))]
         st.table(pd.DataFrame(table, index=["Original", "What-if"]).T)
         st.caption("Original machine state unchanged.")
-        st.caption(SCORE_NOTE)
         payload = {
             "model": "random_forest", "score_interpretation": SCORE_NOTE,
             "simulation": comparison.to_dict(),

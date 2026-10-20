@@ -22,7 +22,8 @@ L = low, M = medium, H = high product quality.
 - Quality H: 2.09% (21 failures / 1,003 observations).
 
 Slide takeaway: Quality L has the highest observed failure rate.
-Keep product quality as a categorical predictor; fit its encoder on training data.
+Keep product quality as a categorical predictor. The feature builder uses a fixed,
+predefined L/M/H one-hot vocabulary; it learns no encoding statistics from data.
 
 ## 3. Numeric features by failure status
 
@@ -51,4 +52,5 @@ interaction during feature engineering; this chart does not establish causation.
 - Figures are 3200 x 1800 PNGs (16:9) with matching PDF exports.
 - Counts, rates, and feature statistics are saved in `reports/tables`.
 - EDA used the full dataset. Freeze modeling choices before evaluating the test set.
-- Fit feature transformations and any resampling using training data only.
+- The fixed L/M/H encoding is shared by training and twin inference.
+- Fit any learned transformations or resampling using training data only.

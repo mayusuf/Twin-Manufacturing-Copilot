@@ -1,0 +1,860 @@
+{
+  "test_case": {
+    "id": "EVAL-what_if-01",
+    "split": "evaluation",
+    "category": "what_if",
+    "source": {
+      "test_row_index_zero_based": 502,
+      "observed_failure_label": 1,
+      "selection_stratum": "observed_failure",
+      "selection_model_score": 0.9833333333333333
+    },
+    "initial_state": {
+      "product_quality": "L",
+      "air_temperature_k": 302.6,
+      "process_temperature_k": 310.9,
+      "rotational_speed_rpm": 1331.0,
+      "torque_nm": 52.0,
+      "tool_wear_min": 154.0
+    },
+    "turns": [
+      {
+        "prompt": "What if I replace the tool? Compare baseline and scenario risk.",
+        "before_update": {},
+        "expected": {
+          "current_snapshot": {
+            "state": {
+              "product_quality": "L",
+              "air_temperature_k": 302.6,
+              "process_temperature_k": 310.9,
+              "rotational_speed_rpm": 1331.0,
+              "torque_nm": 52.0,
+              "tool_wear_min": 154.0
+            },
+            "prediction": {
+              "machine_failure": 1,
+              "prediction_label": "Failure",
+              "failure_model_score": 0.9833333333333333,
+              "risk_score": 98.33333333333333,
+              "health_indicator": 1.6666666666666714,
+              "threshold": 0.5
+            }
+          },
+          "required_tools": [
+            {
+              "tool": "simulate_scenario",
+              "inputs": {
+                "tool_wear_min": 0.0
+              }
+            }
+          ],
+          "allow_successful_simulation": true,
+          "reference_facts": {},
+          "review_criteria": [
+            "All machine-specific factual claims match the reference or successful tool evidence; allow ordinary rounding.",
+            "No invented readings, records, physical actions, causes, or future failure times.",
+            "Explain any relevant limitations; risk is an uncalibrated score and health is its inverse.",
+            "Report baseline risk, scenario risk, and signed difference in score points (rounding tolerance 0.05 points).",
+            "Explain this is model sensitivity, not proof of a physical or causal effect."
+          ],
+          "simulation": {
+            "baseline": {
+              "state": {
+                "product_quality": "L",
+                "air_temperature_k": 302.6,
+                "process_temperature_k": 310.9,
+                "rotational_speed_rpm": 1331.0,
+                "torque_nm": 52.0,
+                "tool_wear_min": 154.0
+              },
+              "prediction": {
+                "machine_failure": 1,
+                "prediction_label": "Failure",
+                "failure_model_score": 0.9833333333333333,
+                "risk_score": 98.33333333333333,
+                "health_indicator": 1.6666666666666714,
+                "threshold": 0.5
+              }
+            },
+            "scenario": {
+              "state": {
+                "product_quality": "L",
+                "air_temperature_k": 302.6,
+                "process_temperature_k": 310.9,
+                "rotational_speed_rpm": 1331.0,
+                "torque_nm": 52.0,
+                "tool_wear_min": 0.0
+              },
+              "prediction": {
+                "machine_failure": 1,
+                "prediction_label": "Failure",
+                "failure_model_score": 0.8033333333333333,
+                "risk_score": 80.33333333333333,
+                "health_indicator": 19.66666666666667,
+                "threshold": 0.5
+              }
+            },
+            "risk_score_change": -18.0
+          }
+        }
+      }
+    ]
+  },
+  "run_configuration": {
+    "started_at_utc": "2026-10-17T17:33:22.584940+00:00",
+    "suite_sha256": "36a852879ec70bd241658b588e97d87c94fc8239d2e875e0c79aba762006f536",
+    "split": "evaluation",
+    "model_requested": "gpt-4.1-mini",
+    "trials": 3,
+    "case_ids": [
+      "EVAL-current_state-01",
+      "EVAL-current_state-02",
+      "EVAL-current_state-03",
+      "EVAL-current_state-04",
+      "EVAL-current_state-05",
+      "EVAL-current_state-06",
+      "EVAL-current_state-07",
+      "EVAL-current_state-08",
+      "EVAL-current_state-09",
+      "EVAL-current_state-10",
+      "EVAL-what_if-01",
+      "EVAL-what_if-02",
+      "EVAL-what_if-03",
+      "EVAL-what_if-04",
+      "EVAL-what_if-05",
+      "EVAL-what_if-06",
+      "EVAL-what_if-07",
+      "EVAL-what_if-08",
+      "EVAL-what_if-09",
+      "EVAL-what_if-10",
+      "EVAL-history-01",
+      "EVAL-history-02",
+      "EVAL-history-03",
+      "EVAL-history-04",
+      "EVAL-history-05",
+      "EVAL-history-06",
+      "EVAL-history-07",
+      "EVAL-history-08",
+      "EVAL-history-09",
+      "EVAL-history-10",
+      "EVAL-model_metrics-01",
+      "EVAL-model_metrics-02",
+      "EVAL-model_metrics-03",
+      "EVAL-model_metrics-04",
+      "EVAL-model_metrics-05",
+      "EVAL-model_metrics-06",
+      "EVAL-model_metrics-07",
+      "EVAL-model_metrics-08",
+      "EVAL-model_metrics-09",
+      "EVAL-model_metrics-10",
+      "EVAL-ambiguous_invalid-01",
+      "EVAL-ambiguous_invalid-02",
+      "EVAL-ambiguous_invalid-03",
+      "EVAL-ambiguous_invalid-04",
+      "EVAL-ambiguous_invalid-05",
+      "EVAL-ambiguous_invalid-06",
+      "EVAL-ambiguous_invalid-07",
+      "EVAL-ambiguous_invalid-08",
+      "EVAL-ambiguous_invalid-09",
+      "EVAL-ambiguous_invalid-10",
+      "EVAL-unsupported_claims-01",
+      "EVAL-unsupported_claims-02",
+      "EVAL-unsupported_claims-03",
+      "EVAL-unsupported_claims-04",
+      "EVAL-unsupported_claims-05",
+      "EVAL-unsupported_claims-06",
+      "EVAL-unsupported_claims-07",
+      "EVAL-unsupported_claims-08",
+      "EVAL-unsupported_claims-09",
+      "EVAL-unsupported_claims-10"
+    ],
+    "runtime_artifacts_sha256": {
+      "data/processed/test.csv": "bb5f83203037e3df3d262a5defbf366dca71259da0c6f0a47dc7ee7d6d8e2842",
+      "data/processed/train.csv": "166d9de7ff6606ddcc2f8442c88b2723f0953f8cc1bfcd7f3c4d498d2d03a0f0",
+      "models/random_forest.joblib": "d702fd75953e9b26f191ae9a8dc3f3508de5c6e0667a78bdafdf4cc9b695168e",
+      "models/random_forest_metadata.json": "a8e2ca03fe561f3aeea933060abf3c47668a5fab06e4e7f571a6c289ad00f71e",
+      "models/xgboost_metadata.json": "3896e079622d2f1d48c98725bae1215625b184abbda7aa8120c3dcc65f0c9a78",
+      "src/copilot/agent.py": "dc78e28a85b8d9b5375de3ccf099ccd7bcfd18a2f1f30660d177fcb61a0837f8",
+      "src/digital_twin/twin.py": "011694ef5ba5eccec262630d6fd1dc504d04b6e52678f6d74f11d39e14757f80",
+      "src/prediction/feature_engineering.py": "3aad8873ea657a8a7c242836fd1287f8757962fa69a1cb169a3371ebf3551b14"
+    },
+    "runner_sha256": "2793fd126a9f01c28e7e1b126c0e876367b4720de9e4124d750a2197113800b0",
+    "packages": {
+      "langgraph": "1.2.14",
+      "langchain-openai": "1.7.0",
+      "openai": "3.29.0",
+      "scikit-learn": "1.9.1",
+      "pandas": "3.0.5"
+    },
+    "inference_settings": {
+      "timeout_seconds": 30,
+      "max_retries": 1,
+      "max_tokens": 2000,
+      "temperature": "provider default"
+    },
+    "note": "Frozen reference answers and selection labels are never supplied to the LLM. No token-cost accounting or exact provider model revision is captured."
+  },
+  "trial_results": [
+    {
+      "case_id": "EVAL-what_if-01",
+      "category": "what_if",
+      "trial": 1,
+      "turn": 1,
+      "question": "What if I replace the tool? Compare baseline and scenario risk.",
+      "response": {
+        "text": "Replacing the tool reduces the model's risk score from 98.3 to 80.3, a decrease of 18 points. The failure prediction remains \"Failure,\" but the risk is notably lower with a new tool (wear at 0 minutes) compared to the baseline (wear at 154 minutes). This suggests that tool wear significantly impacts failure risk per the model, though failure is still predicted even with a new tool.\n\nBased on this, replacing the tool could meaningfully lower failure risk but may not eliminate it. It is advisable to also inspect other factors such as process temperature, torque, and rotational speed for potential issues since risk remains substantial after tool replacement.",
+        "context": {
+          "current_snapshot": {
+            "state": {
+              "product_quality": "L",
+              "air_temperature_k": 302.6,
+              "process_temperature_k": 310.9,
+              "rotational_speed_rpm": 1331.0,
+              "torque_nm": 52.0,
+              "tool_wear_min": 154.0
+            },
+            "prediction": {
+              "machine_failure": 1,
+              "prediction_label": "Failure",
+              "failure_model_score": 0.9833333333333333,
+              "risk_score": 98.33333333333333,
+              "health_indicator": 1.6666666666666714,
+              "threshold": 0.5
+            },
+            "timestamp_utc": "2026-10-17T17:34:19.755232+00:00"
+          },
+          "recorded_snapshot_count": 1,
+          "interpretation": "Risk is an uncalibrated model score from 0 to 100, not a calibrated failure probability. Health is 100 minus risk, not measured health or remaining life. What-if comparisons are model responses, not physical or causal forecasts."
+        },
+        "evidence": [
+          {
+            "tool": "simulate_scenario",
+            "inputs": {
+              "product_quality": null,
+              "air_temperature_k": null,
+              "process_temperature_k": null,
+              "rotational_speed_rpm": null,
+              "torque_nm": null,
+              "tool_wear_min": 0
+            },
+            "status": "success",
+            "result": "{\"comparison\": {\"baseline\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 154.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.9833333333333333, \"risk_score\": 98.33333333333333, \"health_indicator\": 1.6666666666666714, \"threshold\": 0.5}, \"timestamp_utc\": \"2026-10-17T17:34:19.755232+00:00\"}, \"scenario\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 0.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.8033333333333333, \"risk_score\": 80.33333333333333, \"health_indicator\": 19.66666666666667, \"threshold\": 0.5}, \"timestamp_utc\": \"2026-10-17T17:34:21.160573+00:00\"}, \"risk_score_change\": -18.0, \"health_indicator_change\": 18.0}, \"interpretation\": \"Risk is an uncalibrated model score from 0 to 100, not a calibrated failure probability. Health is 100 minus risk, not measured health or remaining life. What-if comparisons are model responses, not physical or causal forecasts.\"}"
+          }
+        ],
+        "simulations": [
+          {
+            "baseline": {
+              "state": {
+                "product_quality": "L",
+                "air_temperature_k": 302.6,
+                "process_temperature_k": 310.9,
+                "rotational_speed_rpm": 1331.0,
+                "torque_nm": 52.0,
+                "tool_wear_min": 154.0
+              },
+              "prediction": {
+                "machine_failure": 1,
+                "prediction_label": "Failure",
+                "failure_model_score": 0.9833333333333333,
+                "risk_score": 98.33333333333333,
+                "health_indicator": 1.6666666666666714,
+                "threshold": 0.5
+              },
+              "timestamp_utc": "2026-10-17T17:34:19.755232+00:00"
+            },
+            "scenario": {
+              "state": {
+                "product_quality": "L",
+                "air_temperature_k": 302.6,
+                "process_temperature_k": 310.9,
+                "rotational_speed_rpm": 1331.0,
+                "torque_nm": 52.0,
+                "tool_wear_min": 0.0
+              },
+              "prediction": {
+                "machine_failure": 1,
+                "prediction_label": "Failure",
+                "failure_model_score": 0.8033333333333333,
+                "risk_score": 80.33333333333333,
+                "health_indicator": 19.66666666666667,
+                "threshold": 0.5
+              },
+              "timestamp_utc": "2026-10-17T17:34:21.160573+00:00"
+            },
+            "risk_score_change": -18.0,
+            "health_indicator_change": 18.0
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 3.074747709033545,
+      "tool_calls": 1,
+      "automatic_checks": {
+        "nonempty_answer": true,
+        "baseline_preserved": true,
+        "fresh_context_matches": true,
+        "required_tools_and_arguments": true,
+        "no_unrequested_simulations": true,
+        "simulation_matches_reference": true
+      },
+      "automatic_checks_pass": true,
+      "task_success": null,
+      "review_status": "pending_two_human_reviews",
+      "expected": {
+        "current_snapshot": {
+          "state": {
+            "product_quality": "L",
+            "air_temperature_k": 302.6,
+            "process_temperature_k": 310.9,
+            "rotational_speed_rpm": 1331.0,
+            "torque_nm": 52.0,
+            "tool_wear_min": 154.0
+          },
+          "prediction": {
+            "machine_failure": 1,
+            "prediction_label": "Failure",
+            "failure_model_score": 0.9833333333333333,
+            "risk_score": 98.33333333333333,
+            "health_indicator": 1.6666666666666714,
+            "threshold": 0.5
+          }
+        },
+        "required_tools": [
+          {
+            "tool": "simulate_scenario",
+            "inputs": {
+              "tool_wear_min": 0.0
+            }
+          }
+        ],
+        "allow_successful_simulation": true,
+        "reference_facts": {},
+        "review_criteria": [
+          "All machine-specific factual claims match the reference or successful tool evidence; allow ordinary rounding.",
+          "No invented readings, records, physical actions, causes, or future failure times.",
+          "Explain any relevant limitations; risk is an uncalibrated score and health is its inverse.",
+          "Report baseline risk, scenario risk, and signed difference in score points (rounding tolerance 0.05 points).",
+          "Explain this is model sensitivity, not proof of a physical or causal effect."
+        ],
+        "simulation": {
+          "baseline": {
+            "state": {
+              "product_quality": "L",
+              "air_temperature_k": 302.6,
+              "process_temperature_k": 310.9,
+              "rotational_speed_rpm": 1331.0,
+              "torque_nm": 52.0,
+              "tool_wear_min": 154.0
+            },
+            "prediction": {
+              "machine_failure": 1,
+              "prediction_label": "Failure",
+              "failure_model_score": 0.9833333333333333,
+              "risk_score": 98.33333333333333,
+              "health_indicator": 1.6666666666666714,
+              "threshold": 0.5
+            }
+          },
+          "scenario": {
+            "state": {
+              "product_quality": "L",
+              "air_temperature_k": 302.6,
+              "process_temperature_k": 310.9,
+              "rotational_speed_rpm": 1331.0,
+              "torque_nm": 52.0,
+              "tool_wear_min": 0.0
+            },
+            "prediction": {
+              "machine_failure": 1,
+              "prediction_label": "Failure",
+              "failure_model_score": 0.8033333333333333,
+              "risk_score": 80.33333333333333,
+              "health_indicator": 19.66666666666667,
+              "threshold": 0.5
+            }
+          },
+          "risk_score_change": -18.0
+        }
+      }
+    },
+    {
+      "case_id": "EVAL-what_if-01",
+      "category": "what_if",
+      "trial": 2,
+      "turn": 1,
+      "question": "What if I replace the tool? Compare baseline and scenario risk.",
+      "response": {
+        "text": "Replacing the tool (resetting tool wear from 154 minutes to 0) reduces the model's risk score from 98.3 to 80.3, a decrease of 18 points. The health indicator improves accordingly from 1.7 to 19.7. \n\nThis means the model predicts lower failure risk with a new tool, though the risk remains relatively high. It is a model comparison, not a guarantee of failure avoidance.\n\nNext step: Inspect the tool wear and physical condition of the current tool. Consider replacing the tool if wear is significant, as the model suggests this may reduce failure risk notably.",
+        "context": {
+          "current_snapshot": {
+            "state": {
+              "product_quality": "L",
+              "air_temperature_k": 302.6,
+              "process_temperature_k": 310.9,
+              "rotational_speed_rpm": 1331.0,
+              "torque_nm": 52.0,
+              "tool_wear_min": 154.0
+            },
+            "prediction": {
+              "machine_failure": 1,
+              "prediction_label": "Failure",
+              "failure_model_score": 0.9833333333333333,
+              "risk_score": 98.33333333333333,
+              "health_indicator": 1.6666666666666714,
+              "threshold": 0.5
+            },
+            "timestamp_utc": "2026-10-17T17:34:22.910756+00:00"
+          },
+          "recorded_snapshot_count": 1,
+          "interpretation": "Risk is an uncalibrated model score from 0 to 100, not a calibrated failure probability. Health is 100 minus risk, not measured health or remaining life. What-if comparisons are model responses, not physical or causal forecasts."
+        },
+        "evidence": [
+          {
+            "tool": "simulate_scenario",
+            "inputs": {
+              "product_quality": null,
+              "air_temperature_k": null,
+              "process_temperature_k": null,
+              "rotational_speed_rpm": null,
+              "torque_nm": null,
+              "tool_wear_min": 0
+            },
+            "status": "success",
+            "result": "{\"comparison\": {\"baseline\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 154.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.9833333333333333, \"risk_score\": 98.33333333333333, \"health_indicator\": 1.6666666666666714, \"threshold\": 0.5}, \"timestamp_utc\": \"2026-10-17T17:34:22.910756+00:00\"}, \"scenario\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 0.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.8033333333333333, \"risk_score\": 80.33333333333333, \"health_indicator\": 19.66666666666667, \"threshold\": 0.5}, \"timestamp_utc\": \"2026-10-17T17:34:24.276905+00:00\"}, \"risk_score_change\": -18.0, \"health_indicator_change\": 18.0}, \"interpretation\": \"Risk is an uncalibrated model score from 0 to 100, not a calibrated failure probability. Health is 100 minus risk, not measured health or remaining life. What-if comparisons are model responses, not physical or causal forecasts.\"}"
+          }
+        ],
+        "simulations": [
+          {
+            "baseline": {
+              "state": {
+                "product_quality": "L",
+                "air_temperature_k": 302.6,
+                "process_temperature_k": 310.9,
+                "rotational_speed_rpm": 1331.0,
+                "torque_nm": 52.0,
+                "tool_wear_min": 154.0
+              },
+              "prediction": {
+                "machine_failure": 1,
+                "prediction_label": "Failure",
+                "failure_model_score": 0.9833333333333333,
+                "risk_score": 98.33333333333333,
+                "health_indicator": 1.6666666666666714,
+                "threshold": 0.5
+              },
+              "timestamp_utc": "2026-10-17T17:34:22.910756+00:00"
+            },
+            "scenario": {
+              "state": {
+                "product_quality": "L",
+                "air_temperature_k": 302.6,
+                "process_temperature_k": 310.9,
+                "rotational_speed_rpm": 1331.0,
+                "torque_nm": 52.0,
+                "tool_wear_min": 0.0
+              },
+              "prediction": {
+                "machine_failure": 1,
+                "prediction_label": "Failure",
+                "failure_model_score": 0.8033333333333333,
+                "risk_score": 80.33333333333333,
+                "health_indicator": 19.66666666666667,
+                "threshold": 0.5
+              },
+              "timestamp_utc": "2026-10-17T17:34:24.276905+00:00"
+            },
+            "risk_score_change": -18.0,
+            "health_indicator_change": 18.0
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 2.9253303329460323,
+      "tool_calls": 1,
+      "automatic_checks": {
+        "nonempty_answer": true,
+        "baseline_preserved": true,
+        "fresh_context_matches": true,
+        "required_tools_and_arguments": true,
+        "no_unrequested_simulations": true,
+        "simulation_matches_reference": true
+      },
+      "automatic_checks_pass": true,
+      "task_success": null,
+      "review_status": "pending_two_human_reviews",
+      "expected": {
+        "current_snapshot": {
+          "state": {
+            "product_quality": "L",
+            "air_temperature_k": 302.6,
+            "process_temperature_k": 310.9,
+            "rotational_speed_rpm": 1331.0,
+            "torque_nm": 52.0,
+            "tool_wear_min": 154.0
+          },
+          "prediction": {
+            "machine_failure": 1,
+            "prediction_label": "Failure",
+            "failure_model_score": 0.9833333333333333,
+            "risk_score": 98.33333333333333,
+            "health_indicator": 1.6666666666666714,
+            "threshold": 0.5
+          }
+        },
+        "required_tools": [
+          {
+            "tool": "simulate_scenario",
+            "inputs": {
+              "tool_wear_min": 0.0
+            }
+          }
+        ],
+        "allow_successful_simulation": true,
+        "reference_facts": {},
+        "review_criteria": [
+          "All machine-specific factual claims match the reference or successful tool evidence; allow ordinary rounding.",
+          "No invented readings, records, physical actions, causes, or future failure times.",
+          "Explain any relevant limitations; risk is an uncalibrated score and health is its inverse.",
+          "Report baseline risk, scenario risk, and signed difference in score points (rounding tolerance 0.05 points).",
+          "Explain this is model sensitivity, not proof of a physical or causal effect."
+        ],
+        "simulation": {
+          "baseline": {
+            "state": {
+              "product_quality": "L",
+              "air_temperature_k": 302.6,
+              "process_temperature_k": 310.9,
+              "rotational_speed_rpm": 1331.0,
+              "torque_nm": 52.0,
+              "tool_wear_min": 154.0
+            },
+            "prediction": {
+              "machine_failure": 1,
+              "prediction_label": "Failure",
+              "failure_model_score": 0.9833333333333333,
+              "risk_score": 98.33333333333333,
+              "health_indicator": 1.6666666666666714,
+              "threshold": 0.5
+            }
+          },
+          "scenario": {
+            "state": {
+              "product_quality": "L",
+              "air_temperature_k": 302.6,
+              "process_temperature_k": 310.9,
+              "rotational_speed_rpm": 1331.0,
+              "torque_nm": 52.0,
+              "tool_wear_min": 0.0
+            },
+            "prediction": {
+              "machine_failure": 1,
+              "prediction_label": "Failure",
+              "failure_model_score": 0.8033333333333333,
+              "risk_score": 80.33333333333333,
+              "health_indicator": 19.66666666666667,
+              "threshold": 0.5
+            }
+          },
+          "risk_score_change": -18.0
+        }
+      }
+    },
+    {
+      "case_id": "EVAL-what_if-01",
+      "category": "what_if",
+      "trial": 3,
+      "turn": 1,
+      "question": "What if I replace the tool? Compare baseline and scenario risk.",
+      "response": {
+        "text": "Replacing the tool reduces the model risk score from 98.3 to 80.3, improving the health indicator from 1.7 to 19.7. This is an 18-point decrease in risk according to the model's prediction, although it still classifies the machine failure risk as high.\n\nBased on this, replacing the tool could meaningfully lower failure risk, so I recommend inspecting the tool wear condition and proceeding with replacement if wear is confirmed excessive. This aligns with general maintenance best practices to prevent failure.",
+        "context": {
+          "current_snapshot": {
+            "state": {
+              "product_quality": "L",
+              "air_temperature_k": 302.6,
+              "process_temperature_k": 310.9,
+              "rotational_speed_rpm": 1331.0,
+              "torque_nm": 52.0,
+              "tool_wear_min": 154.0
+            },
+            "prediction": {
+              "machine_failure": 1,
+              "prediction_label": "Failure",
+              "failure_model_score": 0.9833333333333333,
+              "risk_score": 98.33333333333333,
+              "health_indicator": 1.6666666666666714,
+              "threshold": 0.5
+            },
+            "timestamp_utc": "2026-10-17T17:34:25.925723+00:00"
+          },
+          "recorded_snapshot_count": 1,
+          "interpretation": "Risk is an uncalibrated model score from 0 to 100, not a calibrated failure probability. Health is 100 minus risk, not measured health or remaining life. What-if comparisons are model responses, not physical or causal forecasts."
+        },
+        "evidence": [
+          {
+            "tool": "simulate_scenario",
+            "inputs": {
+              "product_quality": null,
+              "air_temperature_k": null,
+              "process_temperature_k": null,
+              "rotational_speed_rpm": null,
+              "torque_nm": null,
+              "tool_wear_min": 0
+            },
+            "status": "success",
+            "result": "{\"comparison\": {\"baseline\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 154.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.9833333333333333, \"risk_score\": 98.33333333333333, \"health_indicator\": 1.6666666666666714, \"threshold\": 0.5}, \"timestamp_utc\": \"2026-10-17T17:34:25.925723+00:00\"}, \"scenario\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 0.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.8033333333333333, \"risk_score\": 80.33333333333333, \"health_indicator\": 19.66666666666667, \"threshold\": 0.5}, \"timestamp_utc\": \"2026-10-17T17:34:27.150066+00:00\"}, \"risk_score_change\": -18.0, \"health_indicator_change\": 18.0}, \"interpretation\": \"Risk is an uncalibrated model score from 0 to 100, not a calibrated failure probability. Health is 100 minus risk, not measured health or remaining life. What-if comparisons are model responses, not physical or causal forecasts.\"}"
+          }
+        ],
+        "simulations": [
+          {
+            "baseline": {
+              "state": {
+                "product_quality": "L",
+                "air_temperature_k": 302.6,
+                "process_temperature_k": 310.9,
+                "rotational_speed_rpm": 1331.0,
+                "torque_nm": 52.0,
+                "tool_wear_min": 154.0
+              },
+              "prediction": {
+                "machine_failure": 1,
+                "prediction_label": "Failure",
+                "failure_model_score": 0.9833333333333333,
+                "risk_score": 98.33333333333333,
+                "health_indicator": 1.6666666666666714,
+                "threshold": 0.5
+              },
+              "timestamp_utc": "2026-10-17T17:34:25.925723+00:00"
+            },
+            "scenario": {
+              "state": {
+                "product_quality": "L",
+                "air_temperature_k": 302.6,
+                "process_temperature_k": 310.9,
+                "rotational_speed_rpm": 1331.0,
+                "torque_nm": 52.0,
+                "tool_wear_min": 0.0
+              },
+              "prediction": {
+                "machine_failure": 1,
+                "prediction_label": "Failure",
+                "failure_model_score": 0.8033333333333333,
+                "risk_score": 80.33333333333333,
+                "health_indicator": 19.66666666666667,
+                "threshold": 0.5
+              },
+              "timestamp_utc": "2026-10-17T17:34:27.150066+00:00"
+            },
+            "risk_score_change": -18.0,
+            "health_indicator_change": 18.0
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 2.6395452090073377,
+      "tool_calls": 1,
+      "automatic_checks": {
+        "nonempty_answer": true,
+        "baseline_preserved": true,
+        "fresh_context_matches": true,
+        "required_tools_and_arguments": true,
+        "no_unrequested_simulations": true,
+        "simulation_matches_reference": true
+      },
+      "automatic_checks_pass": true,
+      "task_success": null,
+      "review_status": "pending_two_human_reviews",
+      "expected": {
+        "current_snapshot": {
+          "state": {
+            "product_quality": "L",
+            "air_temperature_k": 302.6,
+            "process_temperature_k": 310.9,
+            "rotational_speed_rpm": 1331.0,
+            "torque_nm": 52.0,
+            "tool_wear_min": 154.0
+          },
+          "prediction": {
+            "machine_failure": 1,
+            "prediction_label": "Failure",
+            "failure_model_score": 0.9833333333333333,
+            "risk_score": 98.33333333333333,
+            "health_indicator": 1.6666666666666714,
+            "threshold": 0.5
+          }
+        },
+        "required_tools": [
+          {
+            "tool": "simulate_scenario",
+            "inputs": {
+              "tool_wear_min": 0.0
+            }
+          }
+        ],
+        "allow_successful_simulation": true,
+        "reference_facts": {},
+        "review_criteria": [
+          "All machine-specific factual claims match the reference or successful tool evidence; allow ordinary rounding.",
+          "No invented readings, records, physical actions, causes, or future failure times.",
+          "Explain any relevant limitations; risk is an uncalibrated score and health is its inverse.",
+          "Report baseline risk, scenario risk, and signed difference in score points (rounding tolerance 0.05 points).",
+          "Explain this is model sensitivity, not proof of a physical or causal effect."
+        ],
+        "simulation": {
+          "baseline": {
+            "state": {
+              "product_quality": "L",
+              "air_temperature_k": 302.6,
+              "process_temperature_k": 310.9,
+              "rotational_speed_rpm": 1331.0,
+              "torque_nm": 52.0,
+              "tool_wear_min": 154.0
+            },
+            "prediction": {
+              "machine_failure": 1,
+              "prediction_label": "Failure",
+              "failure_model_score": 0.9833333333333333,
+              "risk_score": 98.33333333333333,
+              "health_indicator": 1.6666666666666714,
+              "threshold": 0.5
+            }
+          },
+          "scenario": {
+            "state": {
+              "product_quality": "L",
+              "air_temperature_k": 302.6,
+              "process_temperature_k": 310.9,
+              "rotational_speed_rpm": 1331.0,
+              "torque_nm": 52.0,
+              "tool_wear_min": 0.0
+            },
+            "prediction": {
+              "machine_failure": 1,
+              "prediction_label": "Failure",
+              "failure_model_score": 0.8033333333333333,
+              "risk_score": 80.33333333333333,
+              "health_indicator": 19.66666666666667,
+              "threshold": 0.5
+            }
+          },
+          "risk_score_change": -18.0
+        }
+      }
+    }
+  ],
+  "human_review_rows": [
+    {
+      "case_id": "EVAL-what_if-01",
+      "category": "what_if",
+      "trial": "1",
+      "turn": "1",
+      "reviewer": "A",
+      "question": "What if I replace the tool? Compare baseline and scenario risk.",
+      "answer": "Replacing the tool reduces the model's risk score from 98.3 to 80.3, a decrease of 18 points. The failure prediction remains \"Failure,\" but the risk is notably lower with a new tool (wear at 0 minutes) compared to the baseline (wear at 154 minutes). This suggests that tool wear significantly impacts failure risk per the model, though failure is still predicted even with a new tool.\n\nBased on this, replacing the tool could meaningfully lower failure risk but may not eliminate it. It is advisable to also inspect other factors such as process temperature, torque, and rotational speed for potential issues since risk remains substantial after tool replacement.",
+      "error": "",
+      "reference": "{\"current_snapshot\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 154.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.9833333333333333, \"risk_score\": 98.33333333333333, \"health_indicator\": 1.6666666666666714, \"threshold\": 0.5}}, \"required_tools\": [{\"tool\": \"simulate_scenario\", \"inputs\": {\"tool_wear_min\": 0.0}}], \"allow_successful_simulation\": true, \"reference_facts\": {}, \"review_criteria\": [\"All machine-specific factual claims match the reference or successful tool evidence; allow ordinary rounding.\", \"No invented readings, records, physical actions, causes, or future failure times.\", \"Explain any relevant limitations; risk is an uncalibrated score and health is its inverse.\", \"Report baseline risk, scenario risk, and signed difference in score points (rounding tolerance 0.05 points).\", \"Explain this is model sensitivity, not proof of a physical or causal effect.\"], \"simulation\": {\"baseline\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 154.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.9833333333333333, \"risk_score\": 98.33333333333333, \"health_indicator\": 1.6666666666666714, \"threshold\": 0.5}}, \"scenario\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 0.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.8033333333333333, \"risk_score\": 80.33333333333333, \"health_indicator\": 19.66666666666667, \"threshold\": 0.5}}, \"risk_score_change\": -18.0}}",
+      "review_criteria": "All machine-specific factual claims match the reference or successful tool evidence; allow ordinary rounding. | No invented readings, records, physical actions, causes, or future failure times. | Explain any relevant limitations; risk is an uncalibrated score and health is its inverse. | Report baseline risk, scenario risk, and signed difference in score points (rounding tolerance 0.05 points). | Explain this is model sensitivity, not proof of a physical or causal effect.",
+      "automatic_checks": "{\"nonempty_answer\": true, \"baseline_preserved\": true, \"fresh_context_matches\": true, \"required_tools_and_arguments\": true, \"no_unrequested_simulations\": true, \"simulation_matches_reference\": true}",
+      "answer_correct_0_or_1": "",
+      "appropriate_limitations_0_or_1": "",
+      "unsupported_claim_present_0_or_1": "",
+      "explanation_quality_1_to_5": "",
+      "notes": ""
+    },
+    {
+      "case_id": "EVAL-what_if-01",
+      "category": "what_if",
+      "trial": "1",
+      "turn": "1",
+      "reviewer": "B",
+      "question": "What if I replace the tool? Compare baseline and scenario risk.",
+      "answer": "Replacing the tool reduces the model's risk score from 98.3 to 80.3, a decrease of 18 points. The failure prediction remains \"Failure,\" but the risk is notably lower with a new tool (wear at 0 minutes) compared to the baseline (wear at 154 minutes). This suggests that tool wear significantly impacts failure risk per the model, though failure is still predicted even with a new tool.\n\nBased on this, replacing the tool could meaningfully lower failure risk but may not eliminate it. It is advisable to also inspect other factors such as process temperature, torque, and rotational speed for potential issues since risk remains substantial after tool replacement.",
+      "error": "",
+      "reference": "{\"current_snapshot\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 154.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.9833333333333333, \"risk_score\": 98.33333333333333, \"health_indicator\": 1.6666666666666714, \"threshold\": 0.5}}, \"required_tools\": [{\"tool\": \"simulate_scenario\", \"inputs\": {\"tool_wear_min\": 0.0}}], \"allow_successful_simulation\": true, \"reference_facts\": {}, \"review_criteria\": [\"All machine-specific factual claims match the reference or successful tool evidence; allow ordinary rounding.\", \"No invented readings, records, physical actions, causes, or future failure times.\", \"Explain any relevant limitations; risk is an uncalibrated score and health is its inverse.\", \"Report baseline risk, scenario risk, and signed difference in score points (rounding tolerance 0.05 points).\", \"Explain this is model sensitivity, not proof of a physical or causal effect.\"], \"simulation\": {\"baseline\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 154.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.9833333333333333, \"risk_score\": 98.33333333333333, \"health_indicator\": 1.6666666666666714, \"threshold\": 0.5}}, \"scenario\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 0.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.8033333333333333, \"risk_score\": 80.33333333333333, \"health_indicator\": 19.66666666666667, \"threshold\": 0.5}}, \"risk_score_change\": -18.0}}",
+      "review_criteria": "All machine-specific factual claims match the reference or successful tool evidence; allow ordinary rounding. | No invented readings, records, physical actions, causes, or future failure times. | Explain any relevant limitations; risk is an uncalibrated score and health is its inverse. | Report baseline risk, scenario risk, and signed difference in score points (rounding tolerance 0.05 points). | Explain this is model sensitivity, not proof of a physical or causal effect.",
+      "automatic_checks": "{\"nonempty_answer\": true, \"baseline_preserved\": true, \"fresh_context_matches\": true, \"required_tools_and_arguments\": true, \"no_unrequested_simulations\": true, \"simulation_matches_reference\": true}",
+      "answer_correct_0_or_1": "",
+      "appropriate_limitations_0_or_1": "",
+      "unsupported_claim_present_0_or_1": "",
+      "explanation_quality_1_to_5": "",
+      "notes": ""
+    },
+    {
+      "case_id": "EVAL-what_if-01",
+      "category": "what_if",
+      "trial": "2",
+      "turn": "1",
+      "reviewer": "A",
+      "question": "What if I replace the tool? Compare baseline and scenario risk.",
+      "answer": "Replacing the tool (resetting tool wear from 154 minutes to 0) reduces the model's risk score from 98.3 to 80.3, a decrease of 18 points. The health indicator improves accordingly from 1.7 to 19.7. \n\nThis means the model predicts lower failure risk with a new tool, though the risk remains relatively high. It is a model comparison, not a guarantee of failure avoidance.\n\nNext step: Inspect the tool wear and physical condition of the current tool. Consider replacing the tool if wear is significant, as the model suggests this may reduce failure risk notably.",
+      "error": "",
+      "reference": "{\"current_snapshot\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 154.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.9833333333333333, \"risk_score\": 98.33333333333333, \"health_indicator\": 1.6666666666666714, \"threshold\": 0.5}}, \"required_tools\": [{\"tool\": \"simulate_scenario\", \"inputs\": {\"tool_wear_min\": 0.0}}], \"allow_successful_simulation\": true, \"reference_facts\": {}, \"review_criteria\": [\"All machine-specific factual claims match the reference or successful tool evidence; allow ordinary rounding.\", \"No invented readings, records, physical actions, causes, or future failure times.\", \"Explain any relevant limitations; risk is an uncalibrated score and health is its inverse.\", \"Report baseline risk, scenario risk, and signed difference in score points (rounding tolerance 0.05 points).\", \"Explain this is model sensitivity, not proof of a physical or causal effect.\"], \"simulation\": {\"baseline\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 154.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.9833333333333333, \"risk_score\": 98.33333333333333, \"health_indicator\": 1.6666666666666714, \"threshold\": 0.5}}, \"scenario\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 0.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.8033333333333333, \"risk_score\": 80.33333333333333, \"health_indicator\": 19.66666666666667, \"threshold\": 0.5}}, \"risk_score_change\": -18.0}}",
+      "review_criteria": "All machine-specific factual claims match the reference or successful tool evidence; allow ordinary rounding. | No invented readings, records, physical actions, causes, or future failure times. | Explain any relevant limitations; risk is an uncalibrated score and health is its inverse. | Report baseline risk, scenario risk, and signed difference in score points (rounding tolerance 0.05 points). | Explain this is model sensitivity, not proof of a physical or causal effect.",
+      "automatic_checks": "{\"nonempty_answer\": true, \"baseline_preserved\": true, \"fresh_context_matches\": true, \"required_tools_and_arguments\": true, \"no_unrequested_simulations\": true, \"simulation_matches_reference\": true}",
+      "answer_correct_0_or_1": "",
+      "appropriate_limitations_0_or_1": "",
+      "unsupported_claim_present_0_or_1": "",
+      "explanation_quality_1_to_5": "",
+      "notes": ""
+    },
+    {
+      "case_id": "EVAL-what_if-01",
+      "category": "what_if",
+      "trial": "2",
+      "turn": "1",
+      "reviewer": "B",
+      "question": "What if I replace the tool? Compare baseline and scenario risk.",
+      "answer": "Replacing the tool (resetting tool wear from 154 minutes to 0) reduces the model's risk score from 98.3 to 80.3, a decrease of 18 points. The health indicator improves accordingly from 1.7 to 19.7. \n\nThis means the model predicts lower failure risk with a new tool, though the risk remains relatively high. It is a model comparison, not a guarantee of failure avoidance.\n\nNext step: Inspect the tool wear and physical condition of the current tool. Consider replacing the tool if wear is significant, as the model suggests this may reduce failure risk notably.",
+      "error": "",
+      "reference": "{\"current_snapshot\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 154.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.9833333333333333, \"risk_score\": 98.33333333333333, \"health_indicator\": 1.6666666666666714, \"threshold\": 0.5}}, \"required_tools\": [{\"tool\": \"simulate_scenario\", \"inputs\": {\"tool_wear_min\": 0.0}}], \"allow_successful_simulation\": true, \"reference_facts\": {}, \"review_criteria\": [\"All machine-specific factual claims match the reference or successful tool evidence; allow ordinary rounding.\", \"No invented readings, records, physical actions, causes, or future failure times.\", \"Explain any relevant limitations; risk is an uncalibrated score and health is its inverse.\", \"Report baseline risk, scenario risk, and signed difference in score points (rounding tolerance 0.05 points).\", \"Explain this is model sensitivity, not proof of a physical or causal effect.\"], \"simulation\": {\"baseline\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 154.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.9833333333333333, \"risk_score\": 98.33333333333333, \"health_indicator\": 1.6666666666666714, \"threshold\": 0.5}}, \"scenario\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 0.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.8033333333333333, \"risk_score\": 80.33333333333333, \"health_indicator\": 19.66666666666667, \"threshold\": 0.5}}, \"risk_score_change\": -18.0}}",
+      "review_criteria": "All machine-specific factual claims match the reference or successful tool evidence; allow ordinary rounding. | No invented readings, records, physical actions, causes, or future failure times. | Explain any relevant limitations; risk is an uncalibrated score and health is its inverse. | Report baseline risk, scenario risk, and signed difference in score points (rounding tolerance 0.05 points). | Explain this is model sensitivity, not proof of a physical or causal effect.",
+      "automatic_checks": "{\"nonempty_answer\": true, \"baseline_preserved\": true, \"fresh_context_matches\": true, \"required_tools_and_arguments\": true, \"no_unrequested_simulations\": true, \"simulation_matches_reference\": true}",
+      "answer_correct_0_or_1": "",
+      "appropriate_limitations_0_or_1": "",
+      "unsupported_claim_present_0_or_1": "",
+      "explanation_quality_1_to_5": "",
+      "notes": ""
+    },
+    {
+      "case_id": "EVAL-what_if-01",
+      "category": "what_if",
+      "trial": "3",
+      "turn": "1",
+      "reviewer": "A",
+      "question": "What if I replace the tool? Compare baseline and scenario risk.",
+      "answer": "Replacing the tool reduces the model risk score from 98.3 to 80.3, improving the health indicator from 1.7 to 19.7. This is an 18-point decrease in risk according to the model's prediction, although it still classifies the machine failure risk as high.\n\nBased on this, replacing the tool could meaningfully lower failure risk, so I recommend inspecting the tool wear condition and proceeding with replacement if wear is confirmed excessive. This aligns with general maintenance best practices to prevent failure.",
+      "error": "",
+      "reference": "{\"current_snapshot\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 154.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.9833333333333333, \"risk_score\": 98.33333333333333, \"health_indicator\": 1.6666666666666714, \"threshold\": 0.5}}, \"required_tools\": [{\"tool\": \"simulate_scenario\", \"inputs\": {\"tool_wear_min\": 0.0}}], \"allow_successful_simulation\": true, \"reference_facts\": {}, \"review_criteria\": [\"All machine-specific factual claims match the reference or successful tool evidence; allow ordinary rounding.\", \"No invented readings, records, physical actions, causes, or future failure times.\", \"Explain any relevant limitations; risk is an uncalibrated score and health is its inverse.\", \"Report baseline risk, scenario risk, and signed difference in score points (rounding tolerance 0.05 points).\", \"Explain this is model sensitivity, not proof of a physical or causal effect.\"], \"simulation\": {\"baseline\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 154.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.9833333333333333, \"risk_score\": 98.33333333333333, \"health_indicator\": 1.6666666666666714, \"threshold\": 0.5}}, \"scenario\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 0.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.8033333333333333, \"risk_score\": 80.33333333333333, \"health_indicator\": 19.66666666666667, \"threshold\": 0.5}}, \"risk_score_change\": -18.0}}",
+      "review_criteria": "All machine-specific factual claims match the reference or successful tool evidence; allow ordinary rounding. | No invented readings, records, physical actions, causes, or future failure times. | Explain any relevant limitations; risk is an uncalibrated score and health is its inverse. | Report baseline risk, scenario risk, and signed difference in score points (rounding tolerance 0.05 points). | Explain this is model sensitivity, not proof of a physical or causal effect.",
+      "automatic_checks": "{\"nonempty_answer\": true, \"baseline_preserved\": true, \"fresh_context_matches\": true, \"required_tools_and_arguments\": true, \"no_unrequested_simulations\": true, \"simulation_matches_reference\": true}",
+      "answer_correct_0_or_1": "",
+      "appropriate_limitations_0_or_1": "",
+      "unsupported_claim_present_0_or_1": "",
+      "explanation_quality_1_to_5": "",
+      "notes": ""
+    },
+    {
+      "case_id": "EVAL-what_if-01",
+      "category": "what_if",
+      "trial": "3",
+      "turn": "1",
+      "reviewer": "B",
+      "question": "What if I replace the tool? Compare baseline and scenario risk.",
+      "answer": "Replacing the tool reduces the model risk score from 98.3 to 80.3, improving the health indicator from 1.7 to 19.7. This is an 18-point decrease in risk according to the model's prediction, although it still classifies the machine failure risk as high.\n\nBased on this, replacing the tool could meaningfully lower failure risk, so I recommend inspecting the tool wear condition and proceeding with replacement if wear is confirmed excessive. This aligns with general maintenance best practices to prevent failure.",
+      "error": "",
+      "reference": "{\"current_snapshot\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 154.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.9833333333333333, \"risk_score\": 98.33333333333333, \"health_indicator\": 1.6666666666666714, \"threshold\": 0.5}}, \"required_tools\": [{\"tool\": \"simulate_scenario\", \"inputs\": {\"tool_wear_min\": 0.0}}], \"allow_successful_simulation\": true, \"reference_facts\": {}, \"review_criteria\": [\"All machine-specific factual claims match the reference or successful tool evidence; allow ordinary rounding.\", \"No invented readings, records, physical actions, causes, or future failure times.\", \"Explain any relevant limitations; risk is an uncalibrated score and health is its inverse.\", \"Report baseline risk, scenario risk, and signed difference in score points (rounding tolerance 0.05 points).\", \"Explain this is model sensitivity, not proof of a physical or causal effect.\"], \"simulation\": {\"baseline\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 154.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.9833333333333333, \"risk_score\": 98.33333333333333, \"health_indicator\": 1.6666666666666714, \"threshold\": 0.5}}, \"scenario\": {\"state\": {\"product_quality\": \"L\", \"air_temperature_k\": 302.6, \"process_temperature_k\": 310.9, \"rotational_speed_rpm\": 1331.0, \"torque_nm\": 52.0, \"tool_wear_min\": 0.0}, \"prediction\": {\"machine_failure\": 1, \"prediction_label\": \"Failure\", \"failure_model_score\": 0.8033333333333333, \"risk_score\": 80.33333333333333, \"health_indicator\": 19.66666666666667, \"threshold\": 0.5}}, \"risk_score_change\": -18.0}}",
+      "review_criteria": "All machine-specific factual claims match the reference or successful tool evidence; allow ordinary rounding. | No invented readings, records, physical actions, causes, or future failure times. | Explain any relevant limitations; risk is an uncalibrated score and health is its inverse. | Report baseline risk, scenario risk, and signed difference in score points (rounding tolerance 0.05 points). | Explain this is model sensitivity, not proof of a physical or causal effect.",
+      "automatic_checks": "{\"nonempty_answer\": true, \"baseline_preserved\": true, \"fresh_context_matches\": true, \"required_tools_and_arguments\": true, \"no_unrequested_simulations\": true, \"simulation_matches_reference\": true}",
+      "answer_correct_0_or_1": "",
+      "appropriate_limitations_0_or_1": "",
+      "unsupported_claim_present_0_or_1": "",
+      "explanation_quality_1_to_5": "",
+      "notes": ""
+    }
+  ],
+  "source_trial_lines": [
+    31,
+    32,
+    33
+  ]
+}

@@ -1,0 +1,7 @@
+category,unique_tasks,case_trials,passed_automatic_checks,automatic_pass_percent,execution_errors,mean_completed_turn_seconds,mean_completed_turn_tool_calls,human_evaluated_task_success
+Current-state explanation,10,30,30,100.0,0,1.82,0,Pending human review
+What-if simulation,10,30,20,66.67,0,2.98,1,Pending human review
+History and follow-ups,10,30,28,93.33,0,2.04,0.47,Pending human review
+Model performance questions,10,30,30,100.0,0,2.17,1,Pending human review
+Ambiguous or invalid requests,10,30,10,33.33,0,2.38,0.7,Pending human review
+Unsupported requests,10,30,27,90.0,0,1.56,0.1,Pending human review

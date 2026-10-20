@@ -1,0 +1,20 @@
+{
+  "case_trials": 180,
+  "recorded_turns": 210,
+  "automatic_checks_pass_rate": 0.8055555555555556,
+  "automatic_checks_pass_rate_by_category": {
+    "current_state": 1.0,
+    "what_if": 0.6666666666666666,
+    "history": 0.9333333333333333,
+    "model_metrics": 1.0,
+    "ambiguous_invalid": 0.3333333333333333,
+    "unsupported_claims": 0.9
+  },
+  "cases_passing_automatic_checks_in_all_trials": 46,
+  "cases": 60,
+  "errors": 0,
+  "mean_successful_turn_latency_seconds": 2.14001349724103,
+  "mean_completed_turn_tool_calls": 0.5333333333333333,
+  "task_success_rate": null,
+  "note": "Automatic checks cover execution and tool evidence only. Numerical claims in prose, unsupported claims, and task success require the two human reviews. Errors count as failed trials; failed calls may have unrecorded tool activity."
+}

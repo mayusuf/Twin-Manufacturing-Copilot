@@ -69,7 +69,8 @@ and matching PDFs:
 
 Supporting statistics are saved in `reports/tables`. Slide takeaways are in
 `reports/eda_slide_notes.md`. These charts describe the full synthetic dataset.
-Fit subsequent encoding, scaling, and any resampling using training data only.
+The quality encoder uses the predefined L/M/H schema and learns no statistics
+from data. Fit any learned encoding, scaling, or resampling on training data only.
 
 ## Step 4: Feature Engineering
 
@@ -94,6 +95,11 @@ In the formulas below, `Tp` and `Ta` are process and air temperatures (K),
 | `tool_wear_x_torque` | `w * t` | Interaction between tool wear and load. |
 | `tool_wear_x_power` | `w * P` | Interaction between tool wear and power. |
 | `product_quality_L`, `product_quality_M`, `product_quality_H` | `1` if quality matches the column, otherwise `0` | One-hot encoding of product quality. |
+
+The encoding order is L, M, H: L becomes `(1, 0, 0)`, M `(0, 1, 0)`,
+and H `(0, 0, 1)`. All three columns are retained even if an input batch lacks
+a category. The shared predictor builder rejects unknown quality levels and
+uses this same encoding for training, Digital Twin prediction, and simulation.
 
 The engineered dataset is saved to:
 
@@ -345,3 +351,24 @@ Run the graph, twin, and dashboard tests without an API key:
 
 The Copilot tests use scripted LLM messages with the real graph and Random Forest;
 they do not evaluate the quality of responses from a live LLM.
+
+## Copilot Research Evaluation
+
+A separate benchmark provides 60 frozen evaluation tasks and 12 development tasks,
+with machine states, independently computed twin reference results, expected tool
+behavior, and human-review criteria. It covers current-state explanations, what-if
+simulation, history and follow-ups, saved model metrics, ambiguous/invalid inputs,
+and unsupported claims.
+
+See [the evaluation protocol](evaluation/copilot_v1/README.md) and browse
+[the scenarios](evaluation/copilot_v1/scenarios.csv). Validate the references
+without an API key:
+
+```bash
+.venv/bin/python -m src.evaluation.run --split evaluation --dry-run
+```
+
+The live runner records actual Copilot answers, tool evidence, objective checks,
+and forms for two human reviewers. Objective checks alone do not establish answer
+quality or complete task success. Use development cases for tuning and preserve
+the final evaluation split for reporting.

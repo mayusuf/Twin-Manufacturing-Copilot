@@ -1,0 +1,2 @@
+category,unique_tasks,case_trials,passed_automatic_checks,automatic_pass_percent,execution_errors,mean_completed_turn_seconds,mean_completed_turn_tool_calls,human_evaluated_task_success
+Current-state explanation,1,1,0,0.0,1,,,Pending human review

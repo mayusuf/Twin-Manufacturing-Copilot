@@ -128,7 +128,13 @@ def add_domain_features(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def encode_product_quality(df: pd.DataFrame) -> pd.DataFrame:
-    """One-hot encode product quality with a stable L, M, H column order."""
+    """One-hot encode validated quality values in fixed L, M, H order.
+
+    The vocabulary comes from the input schema, not from observed test values.
+    Keep all three indicators even when a batch contains only one quality level.
+    build_predictor_table validates unknown levels before calling this function
+    and shares the same transformation across training and twin inference.
+    """
     encoded = df.copy()
     quality = pd.Categorical(encoded["product_quality"], categories=QUALITY_LEVELS)
     quality_dummies = pd.get_dummies(
